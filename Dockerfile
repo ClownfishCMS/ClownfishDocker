@@ -1,8 +1,6 @@
-# Container image that runs your code
-FROM alpine:3.10
-
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
-
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+# Base Alpine Linux based image with OpenJDK JRE only
+FROM openjdk:8-jre-alpine
+# copy application WAR (with libraries inside)
+COPY target/spring-boot-*.war /app.war
+# specify default command
+CMD ["/usr/bin/java", "-jar", "-Dspring.profiles.active=test", "/app.war"]
