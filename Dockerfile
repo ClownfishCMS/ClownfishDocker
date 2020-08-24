@@ -5,4 +5,4 @@ RUN mkdir -p /usr/clownfish
 WORKDIR /usr/clownfish
 RUN curl http://www.clownfish-cms.de/GetAsset?apikey=5omcWwYPuFXOv/WSdnmYgZv7vMJ3DNGkUH0NvfWpIKs=&mediaid=19
 # specify default command
-CMD ["/usr/bin/java", "-war", "/clownfish-0.2.9-SNAPSHOT.war"]
+CMD ["/usr/bin/java", "-jar", "/clownfish-0.2.9-SNAPSHOT.war"]
