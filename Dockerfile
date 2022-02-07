@@ -1,8 +1,9 @@
 # Base Alpine Linux based image with OpenJDK JRE only
-FROM openjdk:8-jre-alpine
+FROM openjdk:11-jre-alpine
 RUN apk add --no-cache curl tar bash
 RUN mkdir -p /usr/clownfish
 WORKDIR /usr/clownfish
-RUN curl http://www.clownfish-cms.de/GetAsset?apikey=5omcWwYPuFXOv/WSdnmYgZv7vMJ3DNGkUH0NvfWpIKs=&mediaid=19
+RUN curl -o clownfish.zip https://www.clownfish-cms.de/cache/clownfishcms_0_7_6.zip
+CMD ["/usr/bin/unzip", "clownfish.zip"]
 # specify default command
-CMD ["/usr/bin/java", "-jar", "/clownfish-0.2.9-SNAPSHOT.war"]
+#CMD ["/usr/bin/java", "-jar", "/clownfish-0.2.9-SNAPSHOT.war"]
